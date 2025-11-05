@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: dbt_mariadb_storage
+    description: "Source database containing operational tables"
+    database: dbt_mariadb_storage
+    schema: dbt_mariadb_storage
+    tables:
+      - name: hot_storage
+        description: "Hot storage table containing the most recent operational data"
+        columns:
+          - name: id
+            description: "Unique identifier for each record"
+            tests:
+              - unique
+              - not_null
+          - name: title
+            description: "Title or name field"
+          - name: ts
+            description: "Timestamp indicating when the record was last updated"
+            tests:
+              - not_null

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: cold_storage_incremental
+    description: "This model represents the cold storage table that archives data from hot storage."
+    columns:
+      - name: id
+        description: "Unique identifier for each record."
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: source('dbt_mariadb_storage', 'hot_storage')
+              field: id
+      - name: ts
+        description: "Timestamp indicating when the record was last updated."
+        tests:
+          - not_null
+      - name: title
+        description: "Additional column for storing relevant data."

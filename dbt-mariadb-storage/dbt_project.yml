@@ -1,0 +1,24 @@
+name: dbt_mariadb_storage
+version: 1.0.0
+
+config-version: 2
+
+profile: mariadb_profile
+
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_modules"
+
+models:
+  +materialized: view
+  core:
+    +materialized: view
+    cold_storage_incremental:
+      +materialized: table

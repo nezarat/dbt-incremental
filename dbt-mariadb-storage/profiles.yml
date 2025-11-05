@@ -1,0 +1,14 @@
+mariadb_profile:
+  target: dev
+  outputs:
+    dev:
+      type: mariadb
+      server: 127.0.0.1
+      port: 3306
+      database: dbt_mariadb_storage
+      schema: dbt_mariadb_storage
+      username: dbt
+      password: dbt
+      ssl_disabled: true
+      connect_timeout: 10
+      threads: 4
