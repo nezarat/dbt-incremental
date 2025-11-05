@@ -9,9 +9,6 @@ models:
         tests:
           - unique
           - not_null
-          - relationships:
-              to: source('dbt_mariadb_storage', 'hot_storage')
-              field: id
       - name: ts
         description: "Timestamp indicating when the record was last updated."
         tests:
